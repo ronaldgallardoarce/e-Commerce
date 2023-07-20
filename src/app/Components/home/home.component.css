@@ -1,0 +1,29 @@
+.articulo-card{
+    position: relative;
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    overflow: hidden;
+}
+.articulo-card .card-images{
+    position: relative;
+    height: 210px;
+}
+.articulo-card .card-images img{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    transform: rotate(18deg);
+    left: 12px;
+    top: -40px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+
+.select-option {
+    background: rgb(234, 179, 52);
+}
