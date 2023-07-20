@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   apiUrl: 'http://localhost/ServidorPhpTiendaRopa/Articulo.php'
+=======
+  ApiUrl:'http://localhost:3000/BackEnd/Articulo.php'
+>>>>>>> 819b812d31c91911526f667eb2c13c00abd3035f
 };
 
 /*
