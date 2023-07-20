@@ -23,6 +23,19 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              
+              "node_modules/swiper/swiper-bundle.min.css",
+
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+          
+=======
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
@@ -31,6 +44,7 @@
 
              "node_modules/@popperjs/core/dist/umd/popper.min.js",
 
+>>>>>>> 819b812d31c91911526f667eb2c13c00abd3035f
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },

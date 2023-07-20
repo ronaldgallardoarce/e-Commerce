@@ -1,0 +1,58 @@
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+      <h1>Administrador de Proveedor</h1>
+    </div>
+  
+
+    <div class="text-right mb-3">
+      <button class="btn btn-success">
+        <i class="fas fa-plus"></i> Nuevo
+      </button>
+    </div>
+  
+
+    <div class="table-responsive">
+      <table class="table table-striped table-dark">
+
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Codigo</th>
+            <th scope="col">NombreCompañia</th>
+            <th scope="col">NombreContacto</th>
+            <th scope="col">NombreTitulo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Operaciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let prov of proveedor" class="text-center">
+            <td>{{ prov.CodigoP }}</td>
+            <td>{{ prov.NombreCompa }}</td>
+            <td>{{ prov.NombreContacto }}</td>
+            <td>{{ prov.NombreTitulo }}</td>
+            <td>{{ prov.Direccion }}</td>
+            <td>{{ prov.Ciudad }}</td>
+            <td>{{ prov.Pais }}</td>
+            <td>{{ prov.Correo }}</td>
+            <td>{{ prov.Telefono }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm">
+                <i class="fas fa-edit"></i> Editar
+              </button>
+              <button class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+

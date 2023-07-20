@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Articulo } from 'src/app/interfaces/articulo.interface';
+import { ArticuloService } from 'src/app/services/articulo.service';
 
 @Component({
   selector: 'app-listar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarComponent implements OnInit {
 
-  constructor() { }
-
+ 
+  constructor(private articulosSvs:ArticuloService) { }
+  articulos: Articulo[]=[]; 
   ngOnInit(): void {
+    this.articulosSvs.getArticulos().subscribe(art=>{
+      this.articulos=art;
+    })
   }
-
+  
+ 
 }
