@@ -1,6 +1,10 @@
+.logo{
+    width: 50px;
+    margin-top: -5px;
+}
 .articulo-card{
     position: relative;
-    border-radius: 25px;
+    border-radius: 10px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     z-index: 3;
@@ -8,20 +12,96 @@
 }
 .articulo-card .card-images{
     position: relative;
-    height: 210px;
+    height: 235px;
 }
 .articulo-card .card-images img{
     position: absolute;
     height: 300px;
     width: 300px;
     object-fit: cover;
-    transform: rotate(18deg);
-    left: 12px;
     top: -40px;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
 }
+.articulo-card .card-images img.active{
+    opacity: 1;
+}
+.articulo-card .card-details{
+ padding: 0 5% 5px 5%;
+}
+.articulo-card .card-details .card-title{
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(234, 179, 52);
+}
+.articulo-card .card-details p{
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(61, 61, 62);
+    text-align: justify;
+}
+.card-rating {
+    margin: 0 -1px;
+    color: rgb(234, 179, 52);
+}
+.color-price .color-option{
+    display: flex;
+    align-items: center;
+}
+.color-price{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+.color-price .color-option .color{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(61, 61, 62);
+    margin-right: 8px;
+}
+.color-option .circles{
+    display: flex;
+}
+.color-option .circles .circle{
+    height: 18px;
+    width: 18px;
+    background: black;
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.color-option .circles .circle.blue.active{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px black;
+}
+.color-option .circles .circle.yellow{
+    background: gray;
+}
+.color-option .circles .circle.yellow.active{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px gray;
+}
+.price{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.price_num{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(61, 61, 62);
+}
+.price_letter{
+    font-size: 10x;
+    font-weight: 600;
+    margin-top: -4px;
+    color: rgb(61, 61, 62);
+}
+
+
+
 
 
 .select-option {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TallaService } from 'src/app/services/talla.service';
-import { Talla } from 'src/app/interfaces/talla.interface';
+import { Talla } from 'src/app/Interfaces/talla.interface';
 
 @Component({
   selector: 'app-talla-listar',

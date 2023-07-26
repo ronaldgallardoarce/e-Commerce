@@ -1,3 +1,5 @@
+import { ImagenArticulo } from "./imagen-articulo"
+
 export interface Articulo {
     Id:any
     Nombre:string
@@ -10,4 +12,5 @@ export interface Articulo {
     IdGrupo:any
     IdProveedor:any
     Color:string
+    Imagenes:ImagenArticulo[]
 }
