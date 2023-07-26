@@ -16,6 +16,7 @@ export class DataService {
    }
   private InitialState:EstadoInicial={
     Articulos:[],
+    DetalleArticulo:{},
     ImagenesArticulos:[]
   }
   private StateSubject = new BehaviorSubject<EstadoInicial>(this.InitialState);
@@ -30,6 +31,23 @@ export class DataService {
           Articulos:<Articulo[]>res
         })
         this.GetImagenArticulos()
+      })
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  GetArticulo(id:any){
+    try {
+      const currentState=this.StateSubject.value;
+      this.http.get(ApiUrl+`Articulo.php?function=getArticulo&id=${id}`).subscribe(res=>{
+        this.StateSubject.next({
+          ...currentState,
+          DetalleArticulo:<Articulo>res
+        })
+        const dato=<Articulo>res
+        this.StateSubject.value.DetalleArticulo.Imagenes=this.StateSubject.value.ImagenesArticulos.filter(
+          (img:ImagenArticulo)=>img.IdArticulo===dato.Id)
       })
       
     } catch (error) {
