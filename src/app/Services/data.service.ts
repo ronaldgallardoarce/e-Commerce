@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Articulo } from '../Interfaces/articulo';
+import { ApiUrl } from '../Interfaces/config';
 import { EstadoInicial } from '../Interfaces/estado-inicial';
 import { ImagenArticulo } from '../Interfaces/imagen-articulo';
 
@@ -24,7 +24,7 @@ export class DataService {
   GetAllArticulos(){
     try {
       const currentState=this.StateSubject.value;
-      this.http.get(environment.ApiUrl+'?function=getAll').subscribe(res=>{
+      this.http.get(ApiUrl+'Articulo.php?function=getAllArticulos').subscribe(res=>{
         this.StateSubject.next({
           ...currentState,
           Articulos:<Articulo[]>res
@@ -40,10 +40,14 @@ export class DataService {
   GetImagenArticulos(){
     try {
       const currentState=this.StateSubject.value;
-      this.http.get(environment.ApiUrl+'?function=getImagenArticulo').subscribe(res=>{
+      this.http.get(ApiUrl+'Articulo.php?function=getImagenArticulo').subscribe(res=>{
         this.StateSubject.next({
           ...currentState,
           ImagenesArticulos:<ImagenArticulo[]>res
+        })
+        this.StateSubject.value.Articulos.forEach((item:Articulo)=>{
+          const x = this.StateSubject.value.ImagenesArticulos.filter((img:ImagenArticulo)=>img.IdArticulo===item.Id)
+          item.Imagenes=this.StateSubject.value.ImagenesArticulos.filter((img:ImagenArticulo)=>img.IdArticulo===item.Id)
         })
       })
       

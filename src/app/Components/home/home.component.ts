@@ -14,26 +14,34 @@ export class HomeComponent implements OnInit {
   ImagenArticulos:ImagenArticulo[]=[]
   imagenesMostradas: { [key: number]: boolean } = {};
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService) {
+    
+   }
 
   ngOnInit(): void {
     this.dataService.state$.subscribe(state=>{
       if(state.Articulos){
         this.Articulos=state.Articulos
         this.ImagenArticulos=state.ImagenesArticulos
-        this.ImagenArticulos.forEach(imagen => {
-          this.imagenesMostradas[imagen.Id] = false;
-        });
       }
     })
   }
-  
-  isFirstImage(imagenId: number): boolean {
-    if (this.imagenesMostradas[imagenId]) {
-      return false;
-    } else {
-      this.imagenesMostradas[imagenId] = true;
-      return true;
+  EfectoImagen(id:any) {
+    const card=document.querySelector(".card-"+id)
+    let imagen = document.querySelector(".card-images .imagen-card"+id);
+    let imagen2=document.querySelector(".idle"+id)
+      if (imagen != null) {
+      imagen.classList.remove("active")
+      imagen.classList.add("idle"+id)
+      imagen2?.classList.remove("idle"+id)
+      imagen2?.classList.add("active")
     }
+    card?.addEventListener("mouseleave", (e) =>{
+      imagen2?.classList.remove("active")
+      imagen2?.classList.add("idle"+id)
+      imagen?.classList.remove("idle"+id)
+      imagen?.classList.add("active")
+    })
   }
+  
 }

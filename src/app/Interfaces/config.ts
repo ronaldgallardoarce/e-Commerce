@@ -1,0 +1,1 @@
+export const ApiUrl='https://nuevoestilotja.sicaabol.com/BackEnd/';
