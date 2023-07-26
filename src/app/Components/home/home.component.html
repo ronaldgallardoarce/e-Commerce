@@ -39,7 +39,7 @@
                             <span class="price_letter"> Bs</span>
                         </div>
                         <div class="buttons">
-                            <button class="btn btn-warning" routerLink="/detallearticulo/">Ver mas</button>
+                            <button class="btn btn-warning" (click)="DetalleArticulo(a.Id)" routerLink="/detallearticulo/{{a.Id}}">Ver mas</button>
                         </div>
                     </div>                
                   </div>

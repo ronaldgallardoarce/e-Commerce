@@ -21,14 +21,12 @@ function getImagenArticulo(){
     echo json_encode($resul);
 }
 
-function getArticulo($id){
+function getArticulo(){
+    $id=$_GET['id'];
     global $conn;
     $sql="select * from Articulo where Id=$id";
     $resultado=mysqli_query($conn,$sql);
-    $resul=[];
-    while($fila=mysqli_fetch_assoc($resultado)){
-        $resul[]=$fila;
-    }
+    $resul= mysqli_fetch_assoc($resultado);
     echo json_encode($resul);
 }
 ?>

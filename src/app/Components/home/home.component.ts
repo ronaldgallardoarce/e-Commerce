@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
 
   Articulos:Articulo[]=[]
   ImagenArticulos:ImagenArticulo[]=[]
-  imagenesMostradas: { [key: number]: boolean } = {};
 
   constructor(private dataService:DataService) {
     
@@ -25,6 +24,9 @@ export class HomeComponent implements OnInit {
         this.ImagenArticulos=state.ImagenesArticulos
       }
     })
+  }
+  DetalleArticulo(id:any){
+    this.dataService.GetArticulo(id)
   }
   EfectoImagen(id:any) {
     const card=document.querySelector(".card-"+id)
