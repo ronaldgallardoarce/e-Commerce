@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TallaService } from 'src/app/services/talla.service';
+import { TallaService } from 'src/app/Services/talla.service';
 
 @Component({
   selector: 'app-talla-insertar',

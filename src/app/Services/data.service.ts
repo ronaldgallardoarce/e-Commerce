@@ -5,6 +5,7 @@ import { Articulo } from '../Interfaces/articulo';
 import { ApiUrl } from '../Interfaces/config';
 import { EstadoInicial } from '../Interfaces/estado-inicial';
 import { ImagenArticulo } from '../Interfaces/imagen-articulo';
+import { Talla } from '../Interfaces/talla.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class DataService {
   private InitialState:EstadoInicial={
     Articulos:[],
     DetalleArticulo:{},
-    ImagenesArticulos:[]
+    ImagenesArticulos:[],
+    Talla:[]
   }
   private StateSubject = new BehaviorSubject<EstadoInicial>(this.InitialState);
   state$ =this.StateSubject.asObservable();
@@ -48,6 +50,7 @@ export class DataService {
         const dato=<Articulo>res
         this.StateSubject.value.DetalleArticulo.Imagenes=this.StateSubject.value.ImagenesArticulos.filter(
           (img:ImagenArticulo)=>img.IdArticulo===dato.Id)
+          this.getAllTallas()
       })
       
     } catch (error) {
@@ -69,6 +72,19 @@ export class DataService {
         })
       })
       
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  getAllTallas(){
+    try {
+      const currentState=this.StateSubject.value
+      this.http.get(ApiUrl+'Talla.php?function=getAll').subscribe(res=>{
+        this.StateSubject.next({
+          ...currentState,
+          Talla:<Talla[]>res
+        })
+      })
     } catch (error) {
       console.log(error)
     }
