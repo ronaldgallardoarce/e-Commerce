@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ImagenService } from 'src/app/services/imagen.service';
 import { Imagen } from 'src/app/Interfaces/imagen.interfece';
 import { ArticuloService } from 'src/app/services/articulo.service';
-import { Articulo } from 'src/app/interfaces/articulo.interface';
+import { Articulo } from 'src/app/Interfaces/articulo.interface';
 
 @Component({
   selector: 'app-imagen-listar',

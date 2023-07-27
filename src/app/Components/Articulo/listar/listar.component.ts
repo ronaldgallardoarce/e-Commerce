@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from 'src/app/interfaces/articulo.interface';
+import { Articulo } from 'src/app/Interfaces/articulo.interface';
 import { ArticuloService } from 'src/app/services/articulo.service';
 
 @Component({
