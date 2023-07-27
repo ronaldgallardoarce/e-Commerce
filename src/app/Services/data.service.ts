@@ -5,6 +5,7 @@ import { Articulo } from '../Interfaces/articulo';
 import { ApiUrl } from '../Interfaces/config';
 import { EstadoInicial } from '../Interfaces/estado-inicial';
 import { ImagenArticulo } from '../Interfaces/imagen-articulo';
+import { Talla } from '../Interfaces/talla.interface';
 import { LoginCliente } from '../Interfaces/LoginCliente';
 import { Cliente } from '../Interfaces/UsuarioCliente';
 import { LocalUser } from '../Interfaces/LocalUser';
@@ -17,7 +18,7 @@ export class DataService {
     this.GetAllArticulos();
   }
   private InitialState: EstadoInicial = {
-    Logged: { //estoy guardando los datos para poder interactuar con las compras
+    Logged: {
       Id: '',
       Documento: '',
       TipoDocumento: '',
@@ -33,16 +34,16 @@ export class DataService {
       Ciudad: '',
       Genero: ''
     },
-    LocalUser:{
-      Id:'',
-      Nombre:'',
-      Usuario:'',
-      Foto:''
-    },//estoy guardando los datos que serán visibles en la navbar, para no exponer todos los datos
-    Articulos: [], 
+    LocalUser: {
+      Id: '',
+      Nombre: '',
+      Usuario: '',
+      Foto: ''
+    },
+    Articulos: [],
     DetalleArticulo: {},
     ImagenesArticulos: [],
-    
+    Talla: []
   };
   private StateSubject = new BehaviorSubject<EstadoInicial>(this.InitialState);
   state$ = this.StateSubject.asObservable();
@@ -136,6 +137,19 @@ export class DataService {
         });
     } catch (error) {
       console.log(error);
+    }
+  }
+  getAllTallas(){
+    try {
+      const currentState=this.StateSubject.value
+      this.http.get(ApiUrl+'Talla.php?function=getAll').subscribe(res=>{
+        this.StateSubject.next({
+          ...currentState,
+          Talla:<Talla[]>res
+        })
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }

@@ -18,6 +18,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomeComponent } from './Components/home/home.component';
 import { DetalleArticuloComponent } from './Components/detalle-articulo/detalle-articulo.component';
+import { FormPagoComponent } from './Components/form-pago/form-pago.component';
 import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { LoginComponent } from './Components/login/login.component';
     FooterComponent,
     HomeComponent,
     DetalleArticuloComponent,
+    FormPagoComponent,
     LoginComponent,
   ],
   imports: [

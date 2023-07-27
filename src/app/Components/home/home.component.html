@@ -25,7 +25,7 @@
                         </div>
                         <span class="card-title">{{a.Nombre}}</span>
                         <p>{{a.Descripcion}}</p>                        
-                        <div class="color-price">
+                        <!-- <div class="color-price">
                             <div class="color-option">
                                 <span class="color">Color:</span>
                                 <div class="circles">
@@ -33,15 +33,15 @@
                                     <span class="circle yellow" id="yellow"></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="price">
                             <span class="price_num">{{a.PrecioUnitario}}</span>
                             <span class="price_letter"> Bs</span>
-                        </div>
-                        <div class="buttons">
-                            <button class="btn btn-warning" (click)="DetalleArticulo(a.Id)" routerLink="/detallearticulo/{{a.Id}}">Ver mas</button>
-                        </div>
-                    </div>                
+                        </div>                        
+                    </div>     
+                    <div class="buttons row justify-content-center">
+                        <button class="col-6 btn btn-warning" (click)="DetalleArticulo(a.Id)" routerLink="/detallearticulo/{{a.Id}}">Ver mas</button>
+                    </div>           
                   </div>
                 </div>
             </div>

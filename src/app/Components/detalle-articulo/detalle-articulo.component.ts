@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Articulo } from 'src/app/Interfaces/articulo';
+import { Talla } from 'src/app/Interfaces/talla.interface';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -23,13 +24,14 @@ export class DetalleArticuloComponent implements OnInit {
     Color: '',
     Imagenes: []
   }
-
+  Talla:Talla[]=[]
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
     this.dataService.state$.subscribe(state=>{
       if(state.DetalleArticulo){
         this.Articulo=state.DetalleArticulo
+        this.Talla=state.Talla
       }
     })
   }

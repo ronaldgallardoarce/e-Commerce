@@ -1,6 +1,6 @@
 export interface Talla {
-    Id: number;
+    Id: any;
     NombreTalla: string;
-    Stock: number;
+    Stock: any;
   }
   

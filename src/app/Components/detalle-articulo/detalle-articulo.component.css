@@ -23,3 +23,11 @@
     border: solid 2px;
     border-color: rgb(234, 179, 52);
 }
+.tallas{
+    border: solid 2px;
+    border-radius: 10%;
+    height: 35px; 
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}

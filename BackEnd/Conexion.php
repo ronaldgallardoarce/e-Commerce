@@ -20,7 +20,5 @@ $functionName = $_GET['function'] ?? '';
 // Ejecutar la función correspondiente según el nombre
 if (function_exists($functionName)) {
     call_user_func($functionName);
-} else {
-    echo json_encode(array('error' => 'La función especificada no existe'));
-} 
+}
 ?>
