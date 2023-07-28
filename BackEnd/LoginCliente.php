@@ -1,5 +1,5 @@
 <?php
-require_once ('Conexion.php');
+require_once ('conexion.php');
 
 function getCliente(){
     $data = json_decode(file_get_contents('php://input'), true);

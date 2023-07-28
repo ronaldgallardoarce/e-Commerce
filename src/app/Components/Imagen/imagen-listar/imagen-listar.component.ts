@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagenService } from 'src/app/services/imagen.service';
+import { ImagenService } from 'src/app/Services/imagen.service';
 import { Imagen } from 'src/app/Interfaces/imagen.interfece';
-import { ArticuloService } from 'src/app/services/articulo.service';
+import { ArticuloService } from 'src/app/Services/articulo.service';
 import { Articulo } from 'src/app/Interfaces/articulo.interface';
 
 @Component({

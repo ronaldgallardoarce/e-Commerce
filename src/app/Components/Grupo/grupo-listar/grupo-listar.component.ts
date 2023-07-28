@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GrupoService } from 'src/app/services/grupo.service';
+import { GrupoService } from 'src/app/Services/grupo.service';
 import { Grupo } from 'src/app/Interfaces/grupo.interface';
 
 @Component({

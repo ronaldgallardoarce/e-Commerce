@@ -12,6 +12,6 @@ import { Imagen } from '../Interfaces/imagen.interfece';
     constructor(private http:HttpClient) {}
 
     getImagen():Observable<Imagen[]>{
-        return this.http.get<Imagen[]>(ApiUrl+'ImagenArticulo.php?function=getAll');
+        return this.http.get<Imagen[]>(ApiUrl+'imagenarticulo.php?function=getAll');
     }
   }
