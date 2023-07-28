@@ -5,8 +5,8 @@
       <li><a (click)="todo()">Inicio</a></li>
       <li><a (click)="hombre()">Hombre</a></li>
       <li><a (click)="femenino()">Mujer</a></li>
-      <li><a>Contacto</a></li>
-      <li><a>About</a></li>
+      <li><a routerLink="/contacto">Contacto</a></li>
+      <li><a routerLink="/about">About</a></li>
     </ul>
     <div class="user-info">
       <div class="cart-container" *ngIf="isLoggedInUser">

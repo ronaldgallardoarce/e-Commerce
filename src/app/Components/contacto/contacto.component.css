@@ -1,0 +1,71 @@
+/* CSS */
+.contacto-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  
+  
+  /* Estilos para dispositivos móviles */
+  @media (max-width: 768px) {
+    .contacto-container {
+      padding: 10px;
+    }
+  
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 8px;
+    }
+  
+    button {
+      padding: 8px;
+    }
+  }
+  .row{
+   /* background: linear-gradient(90deg,  rgb(255, 255, 255) 35%, #aa8244 100%);*/
+   background-color: rgba(234, 179, 52, 0.5);
+    border-radius: 15px;
+    
+  }
+ /* #col-izquierda{
+    color: #fff;
+  }*/
+  #map{
+    border-radius: 5px;
+    width: 100%;
+    height:45vh;
+  }
+  .titulos{
+    color: #aa8244; 
+  }

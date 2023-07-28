@@ -20,8 +20,11 @@ import { HomeComponent } from './Components/home/home.component';
 import { DetalleArticuloComponent } from './Components/detalle-articulo/detalle-articulo.component';
 import { FormPagoComponent } from './Components/form-pago/form-pago.component';
 import { LoginComponent } from './Components/login/login.component';
+import { ContactoComponent } from './Components/contacto/contacto.component';
+import { AboutComponent } from './Components/about/about.component';
 import { FiltrararticuloComponent } from './Components/filtrararticulo/filtrararticulo.component';
 import { CarritoComponent } from './Components/carrito/carrito.component';
+
 
 @NgModule({
   declarations: [
@@ -38,8 +41,11 @@ import { CarritoComponent } from './Components/carrito/carrito.component';
     DetalleArticuloComponent,
     FormPagoComponent,
     LoginComponent,
+    ContactoComponent,
+    AboutComponent,
     FiltrararticuloComponent,
     CarritoComponent,
+
   ],
   imports: [
     BrowserModule,

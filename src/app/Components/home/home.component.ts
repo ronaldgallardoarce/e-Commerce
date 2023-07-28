@@ -15,11 +15,9 @@ export class HomeComponent implements OnInit {
 
   Articulos:Articulo[]=[]
   ImagenArticulos:ImagenArticulo[]=[]
-  Key: string = "SaveAsLocalStorage";
+  imagenesMostradas: { [key: number]: boolean } = {};
 
-  constructor(private dataService:DataService, private http:HttpClient) {
-    
-   }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
     this.dataService.state$.subscribe(state=>{
@@ -30,19 +28,13 @@ export class HomeComponent implements OnInit {
     })
     this.evaluteLogged();
   }
-
-  DetalleArticulo(id:any){
-    this.dataService.GetArticulo(id)
-  }
-  EfectoImagen(id:any) {
-    const card=document.querySelector(".card-"+id)
-    let imagen = document.querySelector(".card-images .imagen-card"+id);
-    let imagen2=document.querySelector(".idle"+id)
-      if (imagen != null) {
-      imagen.classList.remove("active")
-      imagen.classList.add("idle"+id)
-      imagen2?.classList.remove("idle"+id)
-      imagen2?.classList.add("active")
+  
+  isFirstImage(imagenId: number): boolean {
+    if (this.imagenesMostradas[imagenId]) {
+      return false;
+    } else {
+      this.imagenesMostradas[imagenId] = true;
+      return true;
     }
     card?.addEventListener("mouseleave", (e) =>{
       imagen2?.classList.remove("active")
@@ -51,14 +43,5 @@ export class HomeComponent implements OnInit {
       imagen?.classList.add("active")
     })
   }
-  evaluteLogged = async (): Promise<void> => {
-    const data: LocalUser = JSON.parse(localStorage.getItem(this.Key) || '{}');
-    if (data) {
-      // this.dataService.GetClientId(data.Id);
-      console.log("s")
-      this.dataService.ChargeLocalUser(data);
-    } else {
-      console.log("usuario no logeado");
-    }
-  }
+  
 }
