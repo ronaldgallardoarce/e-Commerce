@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    background: rgb(234, 179, 52);
+    padding: 20px;
+}   
+.container-items{
+    width: 70%;
+    min-height: 50vh;
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 20px;
+}
+.container-btns{
+    width: 30%;
+    min-height: 50vh;
+    padding: 20px;
+}
+.card-heigth{
+    height: 20vh;
+}
+.card-body{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.precio{
+    font-size: 20px;
+    font-family: fantasy;
+}
+.input{
+    width: 40px;
+}

@@ -9,12 +9,14 @@ import { Talla } from '../Interfaces/talla.interface';
 import { LoginCliente } from '../Interfaces/LoginCliente';
 import { Cliente } from '../Interfaces/UsuarioCliente';
 import { LocalUser } from '../Interfaces/LocalUser';
+import { Carrito } from '../Interfaces/carrito';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router:Router) {
     this.GetAllArticulos();
   }
   private InitialState: EstadoInicial = {
@@ -40,7 +42,7 @@ export class DataService {
       Usuario: '',
       Foto: ''
     },
-    Carrito:[],
+    Carrito:[], //actualizamos este estado
     Articulos: [],
     DetalleArticulo: {},
     ImagenesArticulos: [],
@@ -54,17 +56,17 @@ export class DataService {
         const currentState = this.StateSubject.value;
         
         this.http
-          .post(ApiUrl + 'LoginCliente.php?function=getCliente', cliente)
+          .post(ApiUrl + 'logincliente.php?function=getCliente', cliente)
           .subscribe(async(res) => {
             if (res) {
               await this.StateSubject.next({
                 ...currentState,
                 Logged: <Cliente>res,
               });
+              this.GetCartClientId(this.StateSubject.value.Logged.Id);
               alert("Login success")
               resolve("Ok");
             }else{
-              alert("not login")
               reject("Error")
               return
             }
@@ -79,26 +81,79 @@ export class DataService {
       LocalUser:<LocalUser>user,
     });
   }
-  GetClientId(id:any){
+  GetCartClientId(id:any){
     try {
+      localStorage.removeItem('Carrito');
       const currentState=this.StateSubject.value;
-      this.http.get(ApiUrl+`LoginCliente.php?function=getCarrito&id=${id}`)
-      .subscribe((res)=>{
-        this.StateSubject.next({
-          ...currentState,
-          Carrito:<any>res,
-        });
+      this.http.get(ApiUrl+`logincliente.php?function=getCarrito&id=${id}`)
+      .subscribe(res=>{
+        const data=<Articulo[]>res
+        let newArray:any=[];
+        data.map((r)=>{
+          newArray.push(this.FilterItemsCart(r));
+        })
+        console.log(newArray)
+        localStorage.setItem('Carrito',JSON.stringify(newArray));
         return res;
       })
     } catch (error) {
       console.log(error)
     }
   }
+  FilterItemsCart=(r:any)=>{
+    try {
+      console.log(this.StateSubject.value.Articulos)
+      const currentState =this.StateSubject.value;
+      const data=this.StateSubject.value.Articulos.find((a)=>a.Nombre===r.Nombre);
+      console.log(data)
+      return data;
+    } catch (error) {
+      return
+    }
+  }
+  AñadirCarrito(id_cliente: number, id_articulo: number, stock: number) {
+    try {
+      const obj = {
+        id_cliente: id_cliente,
+        id_articulo: id_articulo,
+        stock: stock
+      };
+  
+      this.http
+        .post("http://localhost:3000/BackEnd/logincliente.php?function=postCarrito", JSON.stringify(obj))
+        .subscribe((res) => {
+          if (res) {
+            this.router.navigate(["/home"])
+          }
+           
+        });
+        
+    } catch (error) {
+       console.log(error)
+    }
+  }
   GetAllArticulos() {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + 'Articulo.php?function=getAllArticulos')
+        .get(ApiUrl + 'articulo.php?function=getAllArticulos')
+        .subscribe((res) => {
+          this.StateSubject.next({
+            ...currentState,
+            Articulos: <Articulo[]>res,
+          });
+          this.GetImagenArticulos();
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  FiltrarArticulos(id:any) {
+    try {
+      const currentState = this.StateSubject.value;
+      this.http
+        .get(ApiUrl + `articulo.php?function=getfiltrararticulo&id=${id}`)
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -115,7 +170,7 @@ export class DataService {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + `Articulo.php?function=getArticulo&id=${id}`)
+        .get(ApiUrl + `articulo.php?function=getArticulo&id=${id}`)
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -136,7 +191,7 @@ export class DataService {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + 'Articulo.php?function=getImagenArticulo')
+        .get(ApiUrl + 'articulo.php?function=getImagenArticulo')
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -158,7 +213,7 @@ export class DataService {
   getAllTallas(){
     try {
       const currentState=this.StateSubject.value
-      this.http.get(ApiUrl+'Talla.php?function=getAll').subscribe(res=>{
+      this.http.get(ApiUrl+'talla.php?function=getAll').subscribe(res=>{
         this.StateSubject.next({
           ...currentState,
           Talla:<Talla[]>res

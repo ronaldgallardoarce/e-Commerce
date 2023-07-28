@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
   evaluteLogged = async (): Promise<void> => {
     const data: LocalUser = JSON.parse(localStorage.getItem(this.Key) || '{}');
     if (data) {
+      // this.dataService.GetClientId(data.Id);
+      console.log(data)
       this.dataService.ChargeLocalUser(data);
     } else {
       console.log("usuario no logeado");

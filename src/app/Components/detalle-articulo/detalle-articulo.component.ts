@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalUser } from 'src/app/Interfaces/LocalUser';
 import { Articulo } from 'src/app/Interfaces/articulo';
 import { Talla } from 'src/app/Interfaces/talla.interface';
 import { DataService } from 'src/app/Services/data.service';
@@ -25,7 +27,10 @@ export class DetalleArticuloComponent implements OnInit {
     Imagenes: []
   }
   Talla:Talla[]=[]
-  constructor(private dataService:DataService) { }
+  Key: string = "SaveAsLocalStorage";
+
+  countStok:number=1;
+  constructor(private dataService:DataService, private router:Router) { }
 
   ngOnInit(): void {
     this.dataService.state$.subscribe(state=>{
@@ -41,5 +46,10 @@ export class DetalleArticuloComponent implements OnInit {
     document.querySelector(".left-img .option"+id)?.classList.add("active")
     document.querySelector(".img-center .active")?.classList.remove("active")
     document.querySelector(".img-center .img"+id)?.classList.add("active")
+  }
+  AddCarrito(){
+    const data: LocalUser =JSON.parse(localStorage.getItem(this.Key) || '{}');
+    const da=JSON.parse(localStorage.getItem('Carrito') || '[]')
+    const add=  this.dataService.AñadirCarrito(data.Id,this.Articulo.Id,this.countStok)
   }
 }

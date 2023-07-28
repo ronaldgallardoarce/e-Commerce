@@ -1,4 +1,4 @@
-export interface Articulo {
+export interface _INT {
     Id: number;
     Nombre: string;
     Descripcion: string;

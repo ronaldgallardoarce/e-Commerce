@@ -1,34 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { LocalUser } from 'src/app/Interfaces/LocalUser';
 import { Articulo } from 'src/app/Interfaces/articulo';
-import { ApiUrl } from 'src/app/Interfaces/config';
-import { ImagenArticulo } from 'src/app/Interfaces/imagen-articulo';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-filtrararticulo',
+  templateUrl: './filtrararticulo.component.html',
+  styleUrls: ['./filtrararticulo.component.css']
 })
-export class HomeComponent implements OnInit {
-
+export class FiltrararticuloComponent implements OnInit {
   Articulos:Articulo[]=[]
-  ImagenArticulos:ImagenArticulo[]=[]
-  Key: string = "SaveAsLocalStorage";
+ 
+  constructor(private dataService:DataService) { }
 
-  constructor(private dataService:DataService, private http:HttpClient) {
-    
-   }
-
+  
   ngOnInit(): void {
     this.dataService.state$.subscribe(state=>{
       if(state.Articulos){
         this.Articulos=state.Articulos
-        this.ImagenArticulos=state.ImagenesArticulos
       }
     })
-    this.evaluteLogged();
   }
 
   DetalleArticulo(id:any){
@@ -51,14 +41,5 @@ export class HomeComponent implements OnInit {
       imagen?.classList.add("active")
     })
   }
-  evaluteLogged = async (): Promise<void> => {
-    const data: LocalUser = JSON.parse(localStorage.getItem(this.Key) || '{}');
-    if (data) {
-      // this.dataService.GetClientId(data.Id);
-      console.log("s")
-      this.dataService.ChargeLocalUser(data);
-    } else {
-      console.log("usuario no logeado");
-    }
-  }
+
 }
