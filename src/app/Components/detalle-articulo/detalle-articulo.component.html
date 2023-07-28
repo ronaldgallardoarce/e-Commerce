@@ -32,7 +32,10 @@
                         <span class="col-12">Color: <span>{{Articulo.Color}}</span></span>
                     </div>
                     <div class="row justify-content-center">
-                        <button class="mt-3 col-6 btn btn-warning" routerLink="/formPago">Comprar</button>
+                        <form (ngSubmit)="AddCarrito()">
+                        <input [(ngModel)]="countStok" type="number" max="3" min="1" class="input" name="countStok" id="countStok"   value="1">
+                        <button type="submit" class="mt-3 col-6 btn btn-warning"  >Añadir al carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>

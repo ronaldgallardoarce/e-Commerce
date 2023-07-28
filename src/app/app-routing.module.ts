@@ -7,6 +7,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { AboutComponent } from './Components/about/about.component';
 
+
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'contacto',component:ContactoComponent},
   {path:'about',component:AboutComponent}
+
 
 ];
 

@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 30vh;
   }
   
   .logo {
@@ -17,12 +18,14 @@
     display: inline-block;
     margin: 0 20px;
     position: relative;
+    cursor: pointer;
   }
   
   .navbar ul li a {
     text-decoration: none;
     color: rgb(61,61,62);
     text-transform: uppercase;
+    font-weight: bold;
   }
   
   .navbar ul li::after {
@@ -38,6 +41,10 @@
   
   .navbar ul li:hover::after {
     width: 100%;
+    cursor: pointer;
+  }
+  .navbar a:hover{
+    cursor: pointer;
   }
   .user-image{
     width: 70px;
@@ -49,4 +56,34 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .user-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+  }
+  .cart{
+    color: rgb(42, 42, 158);
+    font-size: 30px;
+  }
+  .cart:hover{
+    cursor: pointer;
+  }
+  .cart-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .count-container{
+    display: flex;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(220, 20, 60, 0.863);
+  }
+  .item-count{
+    font-size: 12px;
   }

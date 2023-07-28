@@ -22,6 +22,9 @@ import { FormPagoComponent } from './Components/form-pago/form-pago.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { AboutComponent } from './Components/about/about.component';
+import { FiltrararticuloComponent } from './Components/filtrararticulo/filtrararticulo.component';
+import { CarritoComponent } from './Components/carrito/carrito.component';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { AboutComponent } from './Components/about/about.component';
     LoginComponent,
     ContactoComponent,
     AboutComponent,
+    FiltrararticuloComponent,
+    CarritoComponent,
+
   ],
   imports: [
     BrowserModule,

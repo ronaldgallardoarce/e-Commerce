@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProveedorService } from 'src/app/Services/proveedor.service';
-import { Proveedor } from 'src/app/Interfaces/proveedor.interface';
-
+import { ProveedorService } from 'src/app/services/proveedor.service';
+import { Proveedor } from 'src/app/interfaces/proveedor.interface';
 
 @Component({
   selector: 'app-proveedor-listar',
