@@ -2,6 +2,7 @@ import { LocalUser } from "./LocalUser";
 import { LoginCliente } from "./LoginCliente";
 import { Cliente } from "./UsuarioCliente";
 import { Articulo } from "./articulo";
+import { Carrito } from "./carrito";
 import { ImagenArticulo } from "./imagen-articulo";
 import { Talla } from "./talla.interface";
 
@@ -11,5 +12,6 @@ export interface EstadoInicial {
     DetalleArticulo:any
     ImagenesArticulos:ImagenArticulo[]
     Talla:Talla[]
-    LocalUser:LocalUser
+    LocalUser:LocalUser,
+    Carrito:Carrito[]
 }

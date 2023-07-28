@@ -40,6 +40,7 @@ export class DataService {
       Usuario: '',
       Foto: ''
     },
+    Carrito:[],
     Articulos: [],
     DetalleArticulo: {},
     ImagenesArticulos: [],
@@ -77,6 +78,21 @@ export class DataService {
       ...currentState,
       LocalUser:<LocalUser>user,
     });
+  }
+  GetClientId(id:any){
+    try {
+      const currentState=this.StateSubject.value;
+      this.http.get(ApiUrl+`LoginCliente.php?function=getCarrito&id=${id}`)
+      .subscribe((res)=>{
+        this.StateSubject.next({
+          ...currentState,
+          Carrito:<any>res,
+        });
+        return res;
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
   GetAllArticulos() {
     try {

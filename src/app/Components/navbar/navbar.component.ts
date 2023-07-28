@@ -16,19 +16,25 @@ export class NavbarComponent implements OnInit {
     Usuario:'',
     Foto:''
   }
+  count:number=0;
+  isLoggedInUser: boolean = false;
   constructor(private dataservice: DataService) { }
   
   ngOnInit(): void {
     this.dataservice.state$.subscribe((state)=>{
+      this.isLoggedInUser = this.isLoggedIn();
+      this.count=state.Carrito.length;
     })
   }
   isLoggedIn=()=>{
     const data: LocalUser =JSON.parse(localStorage.getItem(this.Key) || '{}');
     if(data.Id){
+      console.log("a")
+      const car=  this.dataservice.GetClientId(data.Id);
       this.user=data
-      return 1
+      return true
     }else{
-      return 0
+      return false
     }
   }
   cerrar=()=>{
