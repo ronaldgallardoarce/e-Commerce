@@ -1,17 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Proveedor } from '../interfaces/proveedor.interface';
+import { ApiUrl } from '../Interfaces/config';
+import { Proveedor } from '../Interfaces/proveedor.interface';
 
 @Injectable({
     providedIn: 'root'
   })
   export class ProveedorService {
-    private serverURL: string='http://localhost/ServidorPhpTiendaRopa/Proveedor.php';
 
     constructor(private http:HttpClient) {}
 
     getProveedor():Observable<Proveedor[]>{
-        return this.http.get<Proveedor[]>(this.serverURL+'?function=getAll');
+        return this.http.get<Proveedor[]>(ApiUrl+'Proveedor.php?function=getAll');
+    }
+
+    eliminarProveedor(id: any): Observable<any> {
+      return this.http.get<any>(ApiUrl + `Proveedor.php?function=eliminarProveedor&id=${id}`);
     }
   }
+ 

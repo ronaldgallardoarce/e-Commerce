@@ -1,0 +1,33 @@
+.image-options{
+    width: 80%;
+    border-radius: 10%;
+    cursor: pointer;
+}
+.img-center{
+    position: relative;
+}
+.img-center img{
+    border-radius: 1%;
+    position:absolute;
+    width: 100%;
+    object-fit: cover;
+    top: -40px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.img-center img.active{
+    opacity: 1;
+}
+.left-img .active{
+    border: solid 2px;
+    border-color: rgb(234, 179, 52);
+}
+.tallas{
+    border: solid 2px;
+    border-radius: 10%;
+    height: 35px; 
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}

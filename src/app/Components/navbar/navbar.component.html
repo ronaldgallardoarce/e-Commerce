@@ -1,13 +1,25 @@
 <nav>
-    <div class="navbar">
-        <ul>
-        <img src="/assets/WhatsApp Image 2023-07-19 at 20.01.26.jpeg" alt="" class="logo">
-        <li><a >Inicio</a></li>
-          <li><a >Hombre</a></li>
-          <li><a >Mujer</a></li>
-          <li><a >Contacto</a></li>
-          <li><a >About</a></li>
-        </ul>
+  <div class="navbar">
+    <ul>
+      <img src="/assets/WhatsApp Image 2023-07-19 at 20.01.26.jpeg" alt="" class="logo">
+      <li><a routerLink="/home">Inicio</a></li>
+      <li><a>Hombre</a></li>
+      <li><a>Mujer</a></li>
+      <li><a routerLink="/contacto">Contacto</a></li>
+      <li><a routerLink="/about">About</a></li>
+    </ul>
+    <div class="user-info">
+      <div class="buttons-login-register" *ngIf="isLoggedIn()">
+        <img [src]="user.Foto" alt="User Image" class="user-image">
+        <span>{{ user.Nombre }}</span>
+        <button type="submit" (click)="cerrar()" class="btn btn-danger"  >
+          Cerrar seción
+        </button>
+      </div>
+      <div class="buttons-login-register" *ngIf="!isLoggedIn()">
+        <!-- Show the "LOGIN" button if the user is not logged in -->
+        <button class="btn btn-primary btn-block" routerLink="/login">LOGIN</button>
+      </div>
     </div>
-  </nav>
-  
+  </div>
+</nav>
