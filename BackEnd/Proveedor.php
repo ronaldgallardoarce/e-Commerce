@@ -1,5 +1,5 @@
 <?php
-require_once ('Conexion.php');
+require_once ('conexion.php');
 function getAll(){
 global $conn;
 $sql="Select * from Proveedor";

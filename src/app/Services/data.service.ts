@@ -53,7 +53,7 @@ export class DataService {
         const currentState = this.StateSubject.value;
         
         this.http
-          .post(ApiUrl + 'LoginCliente.php?function=getCliente', cliente)
+          .post(ApiUrl + 'logincliente.php?function=getCliente', cliente)
           .subscribe(async(res) => {
             if (res) {
               await this.StateSubject.next({
@@ -82,7 +82,24 @@ export class DataService {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + 'Articulo.php?function=getAllArticulos')
+        .get(ApiUrl + 'articulo.php?function=getAllArticulos')
+        .subscribe((res) => {
+          this.StateSubject.next({
+            ...currentState,
+            Articulos: <Articulo[]>res,
+          });
+          this.GetImagenArticulos();
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  FiltrarArticulos(id:any) {
+    try {
+      const currentState = this.StateSubject.value;
+      this.http
+        .get(ApiUrl + `articulo.php?function=getfiltrararticulo&id=${id}`)
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -99,7 +116,7 @@ export class DataService {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + `Articulo.php?function=getArticulo&id=${id}`)
+        .get(ApiUrl + `articulo.php?function=getArticulo&id=${id}`)
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -120,7 +137,7 @@ export class DataService {
     try {
       const currentState = this.StateSubject.value;
       this.http
-        .get(ApiUrl + 'Articulo.php?function=getImagenArticulo')
+        .get(ApiUrl + 'articulo.php?function=getImagenArticulo')
         .subscribe((res) => {
           this.StateSubject.next({
             ...currentState,
@@ -142,7 +159,7 @@ export class DataService {
   getAllTallas(){
     try {
       const currentState=this.StateSubject.value
-      this.http.get(ApiUrl+'Talla.php?function=getAll').subscribe(res=>{
+      this.http.get(ApiUrl+'talla.php?function=getAll').subscribe(res=>{
         this.StateSubject.next({
           ...currentState,
           Talla:<Talla[]>res

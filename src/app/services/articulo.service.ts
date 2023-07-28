@@ -12,6 +12,6 @@ import { ApiUrl } from '../Interfaces/config';
     constructor(private http:HttpClient) {}
 
     getArticulos():Observable<Articulo[]>{
-        return this.http.get<Articulo[]>(ApiUrl+'Articulo.php?function=getAll');
+        return this.http.get<Articulo[]>(ApiUrl+'articulo.php?function=getAll');
     }
   }

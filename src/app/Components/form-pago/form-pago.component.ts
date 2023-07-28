@@ -42,7 +42,7 @@ export class FormPagoComponent implements OnInit {
   async onCheckout(){
     const Stripe= await loadStripe(StripeConfig.publishableKey)
     try {
-      const session=await this.http.post<any>(ApiUrl+'Checkout.php',{
+      const session=await this.http.post<any>(ApiUrl+'checkout.php',{
         articulo:this.Articulo
       }).toPromise();
       Stripe?.redirectToCheckout({

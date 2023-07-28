@@ -1,5 +1,5 @@
 <?php
-require_once 'Conexion.php';
+require_once 'conexion.php';
 require_once './vendor/autoload.php';
 require_once 'secrets.php';
 
@@ -35,8 +35,8 @@ $checkout_session = \Stripe\Checkout\Session::create([
     ],
   ],
   'mode' => 'payment',
-  'success_url' => 'https://example.com/success',
-  'cancel_url' => 'https://example.com/cancel',
+  'success_url' => $YOUR_DOMAIN . '/home',
+  'cancel_url' => $YOUR_DOMAIN . '/home',
 ]);
 
 // header("HTTP/1.1 303 See Other");

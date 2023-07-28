@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalUser } from 'src/app/Interfaces/LocalUser';
 import { DataService } from 'src/app/Services/data.service';
 
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
     Usuario:'',
     Foto:''
   }
-  constructor(private dataservice: DataService) { }
+  constructor(private dataservice: DataService, private router:Router) { }
   
   ngOnInit(): void {
     this.dataservice.state$.subscribe((state)=>{
@@ -34,5 +35,17 @@ export class NavbarComponent implements OnInit {
   cerrar=()=>{
     console.log('click')
     localStorage.removeItem(this.Key)
+  }
+  hombre(){
+    this.dataservice.FiltrarArticulos(1)
+    this.router.navigate(["/filtrar"])
+  }
+  femenino(){
+    this.dataservice.FiltrarArticulos(2)
+    this.router.navigate(["/filtrar"])
+  }
+  todo(){
+    this.dataservice.GetAllArticulos()
+    this.router.navigate(["/home"])
   }
 }
