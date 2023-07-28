@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     const data: LocalUser =JSON.parse(localStorage.getItem(this.Key) || '{}');
     if(data.Id){
       console.log("a")
-      const car=  this.dataservice.GetClientId(data.Id);
+      // const car=  this.dataservice.GetClientId(data.Id);
       this.user=data
       return true
     }else{
