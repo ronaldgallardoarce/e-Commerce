@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Articulo } from '../Interfaces/articulo.interface';
+import { Articulo } from '../Interfaces/articulo';
 import { ApiUrl } from '../Interfaces/config';
 
 @Injectable({

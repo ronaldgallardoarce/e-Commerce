@@ -9,14 +9,20 @@
       <li><a>About</a></li>
     </ul>
     <div class="user-info">
-      <div class="buttons-login-register" *ngIf="isLoggedIn()">
+      <div class="cart-container" *ngIf="isLoggedInUser">
+        <i routerLink="/carrito" class="fa-solid fa-cart-shopping cart"></i>
+        <!-- <div class="count-container">
+          <span class="item-count">{{count}}</span>
+        </div> -->
+      </div>
+      <div class="buttons-login-register" *ngIf="isLoggedInUser">
         <img [src]="user.Foto" alt="User Image" class="user-image">
         <span>{{ user.Nombre }}</span>
         <button type="submit" (click)="cerrar()" class="btn btn-danger"  >
           Cerrar seción
         </button>
       </div>
-      <div class="buttons-login-register" *ngIf="!isLoggedIn()">
+      <div class="buttons-login-register" *ngIf="!isLoggedInUser">
         <!-- Show the "LOGIN" button if the user is not logged in -->
         <button class="btn btn-primary btn-block" routerLink="/login">LOGIN</button>
       </div>

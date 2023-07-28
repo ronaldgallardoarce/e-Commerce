@@ -5,6 +5,7 @@ import { FiltrararticuloComponent } from './Components/filtrararticulo/filtrarar
 import { FormPagoComponent } from './Components/form-pago/form-pago.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
+import { CarritoComponent } from './Components/carrito/carrito.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path:'detallearticulo',component:DetalleArticuloComponent},
   {path:'formPago',component:FormPagoComponent},
   {path:'login',component:LoginComponent},
-  {path:'filtrar',component:FiltrararticuloComponent}
+  {path:'filtrar',component:FiltrararticuloComponent},
+  {path:'carrito',component:CarritoComponent}
+
 ];
 
 @NgModule({

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="container-items">
+        <div class="card text-left card-heigth" *ngFor="let item of dataCart" >
+          <div class="card-body">
+            <ng-container *ngFor="let img of item.Imagenes">
+                <img [src]="img.Nombre" alt="">
+            </ng-container>
+            <h4 class="card-title">{{item.Nombre}}</h4>
+            <p>{{item.Descripcion}}</p>
+            <p class="precio">Precio:{{item.PrecioUnitario}}</p>
+            <input type="number" max="3" min="0" class="input" name="" id=""   value="1">
+            <button class="btn btn-success">Comprar</button>
+          </div>
+        </div>
+    </div>
+    <div class="container-btns"> 
+        <h2>Subtotal</h2>
+        <p class="precio">{{price}} Bs</p>
+    </div>
+</div>

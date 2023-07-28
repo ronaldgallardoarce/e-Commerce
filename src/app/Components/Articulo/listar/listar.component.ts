@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Articulo } from 'src/app/Interfaces/articulo.interface';
-import { ArticuloService } from 'src/app/Services/articulo.service';
+import { Articulo } from 'src/app/Interfaces/articulo';
+import { ArticuloService } from 'src/app/services/articulo.service';
 
 @Component({
   selector: 'app-listar',

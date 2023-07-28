@@ -17,24 +17,31 @@ export class NavbarComponent implements OnInit {
     Usuario:'',
     Foto:''
   }
+  isLoggedInUser:boolean=false;
+  count:number=0;
   constructor(private dataservice: DataService, private router:Router) { }
   
   ngOnInit(): void {
     this.dataservice.state$.subscribe((state)=>{
+      this.isLoggedInUser = this.isLoggedIn();
+      this.count=state.Carrito.length;
     })
   }
   isLoggedIn=()=>{
     const data: LocalUser =JSON.parse(localStorage.getItem(this.Key) || '{}');
+    // this.dataservice.GetClientId(data.Id);
     if(data.Id){
       this.user=data
-      return 1
+      return true
     }else{
-      return 0
+      return false
     }
   }
   cerrar=()=>{
     console.log('click')
     localStorage.removeItem(this.Key)
+    this.isLoggedInUser = false;
+    this.router.navigate(["/home"])
   }
   hombre(){
     this.dataservice.FiltrarArticulos(1)

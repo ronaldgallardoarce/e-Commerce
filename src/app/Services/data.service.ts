@@ -9,12 +9,14 @@ import { Talla } from '../Interfaces/talla.interface';
 import { LoginCliente } from '../Interfaces/LoginCliente';
 import { Cliente } from '../Interfaces/UsuarioCliente';
 import { LocalUser } from '../Interfaces/LocalUser';
+import { Carrito } from '../Interfaces/carrito';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router:Router) {
     this.GetAllArticulos();
   }
   private InitialState: EstadoInicial = {
@@ -40,6 +42,7 @@ export class DataService {
       Usuario: '',
       Foto: ''
     },
+    Carrito:[], //actualizamos este estado
     Articulos: [],
     DetalleArticulo: {},
     ImagenesArticulos: [],
@@ -60,10 +63,10 @@ export class DataService {
                 ...currentState,
                 Logged: <Cliente>res,
               });
+              this.GetCartClientId(this.StateSubject.value.Logged.Id);
               alert("Login success")
               resolve("Ok");
             }else{
-              alert("not login")
               reject("Error")
               return
             }
@@ -77,6 +80,57 @@ export class DataService {
       ...currentState,
       LocalUser:<LocalUser>user,
     });
+  }
+  GetCartClientId(id:any){
+    try {
+      localStorage.removeItem('Carrito');
+      const currentState=this.StateSubject.value;
+      this.http.get(ApiUrl+`logincliente.php?function=getCarrito&id=${id}`)
+      .subscribe(res=>{
+        const data=<Articulo[]>res
+        let newArray:any=[];
+        data.map((r)=>{
+          newArray.push(this.FilterItemsCart(r));
+        })
+        console.log(newArray)
+        localStorage.setItem('Carrito',JSON.stringify(newArray));
+        return res;
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  FilterItemsCart=(r:any)=>{
+    try {
+      console.log(this.StateSubject.value.Articulos)
+      const currentState =this.StateSubject.value;
+      const data=this.StateSubject.value.Articulos.find((a)=>a.Nombre===r.Nombre);
+      console.log(data)
+      return data;
+    } catch (error) {
+      return
+    }
+  }
+  AñadirCarrito(id_cliente: number, id_articulo: number, stock: number) {
+    try {
+      const obj = {
+        id_cliente: id_cliente,
+        id_articulo: id_articulo,
+        stock: stock
+      };
+  
+      this.http
+        .post("http://localhost:3000/BackEnd/logincliente.php?function=postCarrito", JSON.stringify(obj))
+        .subscribe((res) => {
+          if (res) {
+            this.router.navigate(["/home"])
+          }
+           
+        });
+        
+    } catch (error) {
+       console.log(error)
+    }
   }
   GetAllArticulos() {
     try {

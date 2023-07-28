@@ -21,6 +21,7 @@ import { DetalleArticuloComponent } from './Components/detalle-articulo/detalle-
 import { FormPagoComponent } from './Components/form-pago/form-pago.component';
 import { LoginComponent } from './Components/login/login.component';
 import { FiltrararticuloComponent } from './Components/filtrararticulo/filtrararticulo.component';
+import { CarritoComponent } from './Components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FiltrararticuloComponent } from './Components/filtrararticulo/filtrarar
     FormPagoComponent,
     LoginComponent,
     FiltrararticuloComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
